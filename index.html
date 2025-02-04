@@ -1,115 +1,30 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Голосовой чат</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f9;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-    }
-    .container {
-      background-color: white;
-      padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-      width: 300px;
-      text-align: center;
-    }
-    button {
-      padding: 10px 20px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    button:disabled {
-      background-color: #ccc;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Загрузка и скачивание файлов</title>
 </head>
 <body>
-
-  <div class="container">
-    <h2>Голосовой чат</h2>
-    <button id="startButton">Начать разговор</button>
-    <button id="stopButton" disabled>Закончить разговор</button>
-    <p id="status">Ожидание подключения...</p>
-  </div>
-
-  <script>
-    const startButton = document.getElementById('startButton');
-    const stopButton = document.getElementById('stopButton');
-    const statusText = document.getElementById('status');
+    <h1>Загрузите ваш файл</h1>
     
-    let localStream;
-    let peerConnection;
-    
-    // Настройка STUN-серверов для WebRTC
-    const iceServers = {
-      iceServers: [
-        { urls: 'stun:stun.l.google.com:19302' }
-      ]
-    };
+    <form action="upload.php" method="POST" enctype="multipart/form-data">
+        <label for="file">Выберите файл:</label>
+        <input type="file" name="file" id="file" required>
+        <button type="submit">Загрузить файл</button>
+    </form>
 
-    startButton.addEventListener('click', startCall);
-    stopButton.addEventListener('click', stopCall);
-
-    async function startCall() {
-      startButton.disabled = true;
-      stopButton.disabled = false;
-      statusText.textContent = 'Подключение...';
-
-      // Получаем доступ к микрофону
-      try {
-        localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
-        const audioTracks = localStream.getAudioTracks();
-        console.log('Используется микрофон: ', audioTracks[0].label);
-      } catch (error) {
-        console.error('Ошибка доступа к микрофону:', error);
-        statusText.textContent = 'Ошибка подключения к микрофону';
-        return;
-      }
-
-      // Создаём соединение WebRTC
-      peerConnection = new RTCPeerConnection(iceServers);
-      
-      // Добавляем локальный поток в соединение
-      localStream.getTracks().forEach(track => {
-        peerConnection.addTrack(track, localStream);
-      });
-
-      // Логика для обмена сигналами с другим пользователем (например, через WebSocket или другой сервер)
-      // Здесь будет необходимо взаимодействовать с сервером для создания и обработки SDP предложений и ICE кандидатов
-      statusText.textContent = 'Готово к подключению';
-    }
-
-    function stopCall() {
-      startButton.disabled = false;
-      stopButton.disabled = true;
-      statusText.textContent = 'Завершаем разговор...';
-
-      if (peerConnection) {
-        peerConnection.close();
-        peerConnection = null;
-      }
-
-      if (localStream) {
-        localStream.getTracks().forEach(track => track.stop());
-        localStream = null;
-      }
-
-      statusText.textContent = 'Ожидание подключения...';
-    }
-  </script>
-
+    <h2>Скачайте файл</h2>
+    <ul>
+        <!-- Здесь будут отображаться файлы для скачивания -->
+        <?php
+        $files = scandir('uploads');
+        foreach($files as $file) {
+            if ($file != '.' && $file != '..') {
+                echo "<li><a href='uploads/$file'>$file</a></li>";
+            }
+        }
+        ?>
+    </ul>
 </body>
 </html>
