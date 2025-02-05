@@ -1,30 +1,9 @@
-<!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Загрузка и скачивание файлов</title>
+	<title>Шрек</title>
 </head>
 <body>
-    <h1>Загрузите ваш файл</h1>
-    
-    <form action="upload.php" method="POST" enctype="multipart/form-data">
-        <label for="file">Выберите файл:</label>
-        <input type="file" name="file" id="file" required>
-        <button type="submit">Загрузить файл</button>
-    </form>
-
-    <h2>Скачайте файл</h2>
-    <ul>
-        <!-- Здесь будут отображаться файлы для скачивания -->
-        <?php
-        $files = scandir('uploads');
-        foreach($files as $file) {
-            if ($file != '.' && $file != '..') {
-                echo "<li><a href='uploads/$file'>$file</a></li>";
-            }
-        }
-        ?>
-    </ul>
+    <h1>Щрек 4 Сылка</h1>
+	<h2>https://kinojump.com/9539-shrjek-moroz-zelenyj-nos-2007.html</h2>
 </body>
 </html>
