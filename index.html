@@ -3,30 +3,72 @@
         <title>Dilner Studio</title>
     </head>
     <body>
+        <html>
+    <head>
+        <title>Новости VaizeWorld</title>
+        <style>
+            .block-1 {
+                background-color: #857474;
+                border-radius: 50px; 
+                border: 1px solid rgba(69, 69, 70, 0.616);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 150px;
+                max-width: 350px;
+                margin: 50px auto;
+                text-align: left;
+            }
+            .block-2 {
+                background-color: #965050;
+                border-radius: 25px; 
+                border: 1px solid rgba(69, 69, 70, 0.616);
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                padding: 15px;
+                max-width: 500px;
+                margin: 50px auto;
+                text-align: left;
+            }
+        </style>
+    </head>
+    <body>
         <div align="center">
-            <div>
-                <h1>Привет ! Ето Студия Дилнера</h1>
-            </div>
-            <div>
-                <video width="1280" height="720" controls>
-                    <source src="videoplayback.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <video width="1280" height="720" controls>
-                    <source src="videoplayback.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-            </div>
-            <div>
-                <video width="1280" height="720" controls>
-                    <source src="videoplayback.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
-                <video width="1280" height="720" controls>
-                    <source src="videoplayback.mp4" type="video/mp4">
-                    Your browser does not support the video tag.
-                </video>
+            <div class="block-1">
+                <h1>Привет !</h1>
+                <h1>Если у вас проблема напишите розроботчику</h1>
+                <p>Привет ! Я месенджер VaizeWorld вставь свой тикет в это поле :</p>
+                <div class="block-2">
+                    <h2>Никита Исаев +</h2>
+                    <p>Розроботчик</p>
+                    <p>Внимание ! Я не могу принять вас в состав !</p>
+                    <button onclick="getElementById('myModal').showModal()">Написать .</button>
+                    <dialog id="myModal">
+                    <h1>Никита Исаев ⚡</h1>
+                    <h3>Розроботчик : Не В сети</h3>
+                    <p>AntiHunger - старается уменьшить потребление голода, движение игрока будет как по льду.</p>
+                    <p>AutoArmor - автоматически надевает броню</p>
+                    <p>AutoFarm - автоматическое фермерство</p>
+                    <p>AutoFish - авто рыбалка</p>
+                    <p>AutoSign - автоматическое заполнение текста на табличке, может писать рандомный мусор, может повторять ваше введенное сообщение</p>
+                    <p>AutoSteal - автоматически быстро забирает содержимое сундуков при открытии</p>
+                    <p>AutoThrow - автоматически бросает пузырьки опыта</p>
+                    <p>AutoTool - автоматическое переключение инструментов</p>
+                    <p>DeathExplorer - позволяет перемещаться по миру после вашей смерти</p>
+                    <p>ElytraReplace - снятие и надевание элитры</p>
+                    <p>FastUse - позволяет использовать предметы быстрее</p>
+                    <p>Freecam - свободная камера</p>
+                    <p>Ghosthand - позволяет открывать сундуки через стену</p>
+                    <p>Jesus - возможность ходить по воде</p>
+                    <p>Nofall - отсутствие возможности упасть</p>
+                    <p>NoVelocity - вас не отбрасывает при получении урона</p>
+                    <p>Reach - позволяет атаковать противника с гораздо большего расстояния до него.</p>
+                    <p>RotationSnap - позволяет фиксировать взгляд в направлении прицела, резкие смещения сменят направление взгляда.
+                    </p>
+                <button onclick="getElementById('myModal').close()">Закрити</button>
+                </dialog>
+                </div>
+                </div>
             </div>
         </div>
+    </body>
+</html>
     </body>
 </html>
